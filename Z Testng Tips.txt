@@ -1,0 +1,65 @@
+--------------Run under test package--------
+<packages>
+<package name="tests"/>
+</packages>
+
+------------Run these classes--------
+<classes>
+<class name="tests.LoginTests"/>
+<class name="tests.SecondTests"/>
+</classes>
+    
+    
+---------------how to parallel--------------
+<suite name="Test-method Suite" parallel="methods" thread-count="2"
+<suite name="Test-class Suite" parallel="classes" thread-count="2" >
+<suite name="Test-class Suite" parallel="tests" thread-count="2">
+
+
+--------------Groups--------------
+@Test(groups = { "functest", "checkintest" })	
+@Test(groups = { "checkintest" })
+@Test(groups = { "functest" })
+
+<test name = "test1">
+<groups>
+	<run>
+    	<include name = "functest" />
+	</run>
+</groups>
+<classes>
+	<class name = "GroupTestExample" />
+</classes>
+</test>
+
+<define name = "all">
+<exclude name = "functest"/>
+<include name = "checkintest"/>
+</define>
+<run>
+<include name = "all"/>
+</run>
+
+-----------------Parameters------
+@Parameters({ "suite-param" })
+    @Test
+    public void prameterTestOne(String param) {
+        System.out.println("Test one suite param is: " + param);
+    }
+
+<suite name="Parameter test Suite" verbose="1">
+    <!-- This parameter will be passed to every test in this suite -->
+    <parameter name="suite-param" value="suite level parameter" />
+    
+--------------beanshell for group selection--------------
+<test name="Test">
+    <method-selectors>
+        <method-selector>
+            <script language="beanshell">
+                <![CDATA[
+                    String myTestGroup = System.getProperty("chooseGroup");
+                    groups.containsKey(myTestGroup);
+                ]]>
+            </script>
+        </method-selector>
+    </method-selectors>

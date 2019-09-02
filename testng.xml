@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sep Test Suite" thread-count="2" parallel="classes">
+
+	<listeners>
+		<listener class-name="global.TestListener" />
+	</listeners>
+	<test name="LoginTest">
+		<parameter name="browser" value="chrome" />
+		<packages>
+			<package name="tests" />
+		</packages>
+	</test>
+</suite>

@@ -1,0 +1,8 @@
+/target/
+/test-output
+/TestReport
+/Screenshots
+*.class
+*.log
+.project
+.settings
