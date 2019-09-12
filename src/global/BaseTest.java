@@ -30,7 +30,7 @@ public class BaseTest {
 	public String dateName;
 
 	@BeforeMethod(description = "Class Level Setup!")
-	@Parameters(value = { "browser" })
+	@Parameters("browser")
 	public void setup(@Optional("chrome") String browser) throws MalformedURLException {
 
 		driver = new RemoteWebDriver(new URL("http://10.69.206.138:4444/wd/hub"),
